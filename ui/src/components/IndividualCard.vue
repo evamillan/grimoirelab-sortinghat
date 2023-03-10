@@ -11,7 +11,7 @@
     :ripple="selectable"
     raised
     v-on="$listeners"
-    @drop.native.prevent.stop="onDrop($event)"
+    @drop.prevent.stop="onDrop($event)"
     @dragover.prevent.stop="isDropZone($event, true)"
     @dragenter.prevent.stop="isDropZone($event, true)"
     @dragleave="isDropZone($event, false)"

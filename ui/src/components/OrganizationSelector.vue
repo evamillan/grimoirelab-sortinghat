@@ -2,7 +2,7 @@
   <v-autocomplete
     v-model="inputValue"
     :items="organizations"
-    :search-input.sync="search"
+    :search-input="search"
     :label="label"
     item-text="name"
     item-value="name"

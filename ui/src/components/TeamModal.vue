@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-if="isOpen" v-model="isOpen" persistent max-width="550px">
+  <v-dialog v-if="isOpen" :value="isOpen" persistent max-width="550px">
     <v-card class="section">
       <v-card-title class="header">
         <span class="title"> {{ parent }} teams </span>
@@ -9,7 +9,7 @@
           <v-treeview
             :items="teams"
             :load-children="getSubTeams"
-            :open.sync="open"
+            :open="open"
             color="warning"
             open-on-click
             transition

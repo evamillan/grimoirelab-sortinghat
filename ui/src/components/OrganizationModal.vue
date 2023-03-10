@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" persistent max-width="440px">
+  <v-dialog :value="isOpen" persistent max-width="440px">
     <v-card class="section">
       <v-card-title class="header">
         <span class="title">

@@ -58,9 +58,9 @@
       hide-default-footer
       :headers="headers"
       :items="items"
-      :expanded.sync="expandedItems"
+      :expanded="expandedItems"
       item-key="id"
-      :page.sync="page"
+      :page="page"
     >
       <template v-slot:item="{ item, expand, isExpanded }">
         <organization-entry
@@ -70,8 +70,8 @@
           :is-expanded="isExpanded"
           :is-editable="!isGroup"
           draggable
-          v-on:dblclick.native="expand(!isExpanded)"
-          @dragstart.native="startDrag(item, $event)"
+          v-on:dblclick="expand(!isExpanded)"
+          @dragstart="startDrag(item, $event)"
           @expand="expand(!isExpanded)"
           @enroll="confirmEnroll"
           @edit="openModal(item)"
@@ -114,7 +114,7 @@
 
     <organization-modal
       v-if="!isGroup"
-      :is-open.sync="modal.open"
+      :is-open="modal.open"
       :add-organization="addOrganization"
       :add-domain="addDomain"
       :delete-domain="deleteDomain"

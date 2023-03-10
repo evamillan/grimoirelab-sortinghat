@@ -41,7 +41,8 @@
 </template>
 
 <script>
-import { mapActions } from "vuex";
+import { mapActions } from "pinia";
+import { useAuthStore } from "./../store";
 export default {
   name: "Login",
   data: () => ({
@@ -56,7 +57,7 @@ export default {
     },
   },
   methods: {
-    ...mapActions(["login"]),
+    ...mapActions(useAuthStore, ["login"]),
     async submit() {
       try {
         const authDetails = {
@@ -66,12 +67,13 @@ export default {
         };
         const response = await this.login(authDetails);
         if (response) {
+          console.log(this.$router)
           this.$router.push("/");
-          this.$logger.info(`Log in user ${this.username}`);
+          // this.$logger.info(`Log in user ${this.username}`);
         }
       } catch (error) {
-        this.errorMessage = this.$getErrorMessage(error);
-        this.$logger.error(`Error logging in user ${this.username}: ${error}`);
+        // this.errorMessage = this.$getErrorMessage(error);
+        // this.$logger.error(`Error logging in user ${this.username}: ${error}`);
       }
     },
   },

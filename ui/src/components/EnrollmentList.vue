@@ -62,16 +62,15 @@
           <v-menu
             v-model="enrollment.form.fromDateMenu"
             :close-on-content-click="false"
-            :return-value.sync="enrollment.form.fromDate"
+            :return-value="enrollment.form.fromDate"
             transition="scale-transition"
             offset-y
             min-width="290px"
           >
-            <template v-slot:activator="{ on, attrs }">
+            <template v-slot:activator="{ on }">
               <button
                 :disabled="isLocked"
                 v-on="on"
-                v-bind="attrs"
                 class="v-small-dialog__activator"
               >
                 <span class="grey--text text--darken-2 ml-6">
@@ -118,16 +117,15 @@
           <v-menu
             v-model="enrollment.form.toDateMenu"
             :close-on-content-click="false"
-            :return-value.sync="enrollment.form.toDate"
+            :return-value="enrollment.form.toDate"
             transition="scale-transition"
             offset-y
             min-width="290px"
           >
-            <template v-slot:activator="{ on, attrs }">
+            <template v-slot:activator="{ on }">
               <button
                 :disabled="isLocked"
                 v-on="on"
-                v-bind="attrs"
                 class="v-small-dialog__activator ml-5"
               >
                 <span class="grey--text text--darken-2 ml-2">
@@ -217,16 +215,15 @@
             <v-menu
               v-model="team.form.fromDateMenu"
               :close-on-content-click="false"
-              :return-value.sync="team.form.fromDate"
+              :return-value="team.form.fromDate"
               transition="scale-transition"
               offset-y
               min-width="290px"
             >
-              <template v-slot:activator="{ on, attrs }">
+              <template v-slot:activator="{ on }">
                 <button
                   :disabled="isLocked"
                   v-on="on"
-                  v-bind="attrs"
                   class="v-small-dialog__activator"
                 >
                   <span class="grey--text text--darken-2 ml-6">
@@ -272,16 +269,15 @@
             <v-menu
               v-model="team.form.toDateMenu"
               :close-on-content-click="false"
-              :return-value.sync="team.form.toDate"
+              :return-value="team.form.toDate"
               transition="scale-transition"
               offset-y
               min-width="290px"
             >
-              <template v-slot:activator="{ on, attrs }">
+              <template v-slot:activator="{ on }">
                 <button
                   :disabled="isLocked"
                   v-on="on"
-                  v-bind="attrs"
                   class="v-small-dialog__activator ml-5"
                 >
                   <span class="grey--text text--darken-2 ml-2">

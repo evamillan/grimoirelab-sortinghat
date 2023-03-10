@@ -44,7 +44,7 @@
       </v-list-item>
     </v-list>
     <team-modal
-      :is-open.sync="modal.open"
+      :is-open="modal.open"
       :parent="organization"
       :is-group="isGroup"
       :add-team="addTeam"

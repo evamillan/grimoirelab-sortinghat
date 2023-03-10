@@ -24,11 +24,11 @@
         <v-menu offset-y>
           <template v-slot:activator="{ on, attrs }">
             <v-btn
+              v-bind="attrs"
               class="text-body-1"
               depressed
               color="white"
               height="30"
-              v-bind="attrs"
               v-on="on"
             >
               Filters

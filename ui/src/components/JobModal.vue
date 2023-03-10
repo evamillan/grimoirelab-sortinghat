@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" max-width="550px" @click:outside="onClose">
+  <v-dialog :value="isOpen" max-width="550px" @click:outside="onClose">
     <v-card class="section">
       <v-card-title class="header title">New job</v-card-title>
       <v-card-text class="mt-3">

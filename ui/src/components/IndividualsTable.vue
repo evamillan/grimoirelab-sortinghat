@@ -103,17 +103,16 @@
       </v-tooltip>
     </v-row>
 
-    <v-data-table
-      hide-default-header
-      hide-default-footer
+    <v-data-table-server
       :headers="headers"
       :items="individuals"
-      :expanded.sync="expandedItems"
+      :expanded="expandedItems"
       item-key="uuid"
-      :page.sync="page"
+      :page="page"
       :items-per-page="itemsPerPage"
+      @update:expanded="$event => expandedItems = $event"
     >
-      <template v-slot:item="{ item, expand, isExpanded }">
+      <template v-slot:item="{ item, toggleExpand, isExpanded }">
         <individual-entry
           draggable
           :name="item.name"
@@ -122,17 +121,17 @@
           :username="item.username"
           :sources="item.sources"
           :uuid="item.uuid"
-          :is-expanded="isExpanded"
+          :is-expanded="isExpanded(item)"
           :is-locked="item.isLocked"
           :is-bot="item.isBot"
           :is-selected="item.isSelected"
           :is-highlighted="item.uuid === highlightIndividual"
-          @dblclick.native="expand(!isExpanded)"
-          @expand="expand(!isExpanded)"
+          @dblclick="toggleExpand(item)"
+          @expand="toggleExpand(item)"
           @edit="updateProfileInfo($event, item.uuid)"
           @saveIndividuals="$emit('saveIndividuals', [item])"
-          @dragstart.native="startDrag(item, $event)"
-          @dragend.native="removeClass(item, $event)"
+          @dragstart="startDrag(item, $event)"
+          @dragend="removeClass(item, $event)"
           @select="selectIndividual(item)"
           @delete="confirmDelete([item])"
           @merge="mergeSelected([item.uuid, ...$event])"
@@ -143,7 +142,7 @@
           @enroll="confirmEnroll(item.uuid, $event)"
         />
       </template>
-      <template v-slot:expanded-item="{ item }">
+      <template v-slot:expanded-row="{ item }">
         <expanded-individual
           :uuid="item.uuid"
           :gender="item.gender"
@@ -161,7 +160,7 @@
           @openTeamModal="openTeamModal"
         />
       </template>
-    </v-data-table>
+    </v-data-table-server>
 
     <div class="d-flex align-baseline text-center pt-2">
       <v-col cols="8" class="ml-auto">
@@ -228,7 +227,7 @@
     </v-dialog>
 
     <profile-modal
-      :is-open.sync="openModal"
+      :is-open="openModal"
       :add-identity="addIdentity"
       :updateProfile="updateProfile"
       :enroll="enroll"
@@ -239,7 +238,7 @@
     />
 
     <enroll-modal
-      :is-open.sync="enrollmentModal.open"
+      :is-open="enrollmentModal.open"
       :title="enrollmentModal.title"
       :text="enrollmentModal.text"
       :organization="enrollmentModal.organization"
@@ -250,7 +249,7 @@
 
     <team-enroll-modal
       v-if="teamModal.isOpen"
-      :is-open.sync="teamModal.isOpen"
+      :is-open="teamModal.isOpen"
       :organization="teamModal.organization"
       :uuid="teamModal.uuid"
       :enroll="enroll"

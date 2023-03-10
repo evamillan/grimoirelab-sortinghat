@@ -1,5 +1,5 @@
-import Router from "vue-router";
-import store from "../store";
+import { createRouter, createWebHistory } from "vue-router";
+import { useAuthStore } from "../store";
 
 const routes = [
   {
@@ -40,14 +40,16 @@ const routes = [
   },
 ];
 
-const router = new Router({
-  mode: "history",
-  base: process.env.NODE_ENV === "production" ? "/identities/" : null,
+const base = process.env.NODE_ENV === "production" ? "/identities/" : null;
+
+const router = new createRouter({
+  history: createWebHistory(base),
   routes,
 });
 
 router.beforeEach((to, from, next) => {
-  const isAuthenticated = store.getters.isAuthenticated;
+  const authUserStore = useAuthStore();
+  const isAuthenticated = authUserStore.isAuthenticated;
   if (to.matched.some((record) => record.meta.requiresAuth)) {
     if (!isAuthenticated) {
       next({

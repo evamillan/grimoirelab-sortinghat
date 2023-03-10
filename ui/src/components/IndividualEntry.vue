@@ -107,7 +107,7 @@
       </v-btn>
       <v-menu right nudge-right="35">
         <template v-slot:activator="{ on, attrs }">
-          <v-btn icon v-bind="attrs" v-on="on">
+          <v-btn v-bind="attrs" icon v-on="on">
             <v-icon>mdi-dots-vertical</v-icon>
           </v-btn>
         </template>

@@ -3,7 +3,7 @@
     class="section"
     data-cy="workspace"
     :class="{ 'is-dragging': isDragging }"
-    @drop.native="onDrop($event)"
+    @drop="onDrop($event)"
     @dragover.prevent="onDrag($event)"
     @dragenter.prevent="onDrag($event)"
     @dragleave.prevent="isDragging = false"
@@ -121,7 +121,7 @@
     </v-dialog>
 
     <enroll-modal
-      :is-open.sync="enrollmentModal.open"
+      :is-open="enrollmentModal.open"
       :title="enrollmentModal.title"
       :text="enrollmentModal.text"
       :organization="enrollmentModal.organization"

@@ -1,17 +1,14 @@
-import Vue from "vue";
+import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import store from "./store";
+import { createPinia } from "pinia";
 import vuetify from "./plugins/vuetify";
-import VueApollo from "vue-apollo";
-import VueRouter from "vue-router";
-import { ApolloClient } from "apollo-client";
-import { createHttpLink } from "apollo-link-http";
-import { InMemoryCache } from "apollo-cache-inmemory";
 import Cookies from "js-cookie";
 import { ApolloLink } from "apollo-link";
 import Logger from "./plugins/logger";
 import GetErrorMessage from "./plugins/errors";
+import { createApolloProvider } from '@vue/apollo-option'
+import { ApolloClient, createHttpLink, InMemoryCache } from "@apollo/client/core"
 
 const API_URL = process.env.VUE_APP_API_URL || `${process.env.BASE_URL}api/`;
 
@@ -50,22 +47,16 @@ fetch(API_URL, { credentials: "include" }).then(() => {
     cache,
   });
 
-  Vue.use(VueApollo);
-  Vue.use(VueRouter);
-  Vue.use(Logger);
-  Vue.use(GetErrorMessage);
+  const apolloProvider = new createApolloProvider({
+  defaultClient: apolloClient,
+})
 
-  const apolloProvider = new VueApollo({
-    defaultClient: apolloClient,
-  });
+  const pinia = createPinia();
 
-  Vue.config.productionTip = false;
-
-  new Vue({
-    router,
-    store,
-    vuetify,
-    apolloProvider,
-    render: (h) => h(App),
-  }).$mount("#app");
+  createApp(App)
+    .use(apolloProvider)
+    .use(pinia)
+    .use(router)
+    .use(vuetify)
+    .mount("#app");
 });

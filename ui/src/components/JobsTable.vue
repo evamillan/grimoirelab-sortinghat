@@ -62,7 +62,7 @@
       ></v-pagination>
     </div>
     <p v-else class="text-subtitle-1 pa-7">There are no jobs in the queue.</p>
-    <job-modal :is-open.sync="openModal" v-on="$listeners" />
+    <job-modal :is-open="openModal" v-on="$listeners" />
   </v-container>
 </template>
 

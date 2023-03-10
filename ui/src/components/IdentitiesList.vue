@@ -60,8 +60,8 @@
         :class="{ draggable: draggable && identity.uuid !== uuid }"
         :key="identity.uuid"
         :draggable="draggable && !isLocked && identity.uuid !== uuid"
-        @dragstart.native="startDrag(identity, $event)"
-        @dragend.native="dragEnd($event)"
+        @dragstart="startDrag(identity, $event)"
+        @dragend="dragEnd($event)"
       >
         <v-list-item-icon v-if="index === 0">
           <v-tooltip bottom transition="expand-y-transition" open-delay="300">

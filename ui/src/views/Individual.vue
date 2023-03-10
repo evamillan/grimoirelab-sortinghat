@@ -315,7 +315,7 @@
     </v-container>
 
     <enroll-modal
-      :is-open.sync="enrollmentModal.open"
+      :is-open="enrollmentModal.open"
       :title="enrollmentModal.title"
       :text="enrollmentModal.text"
       :uuid="mk"
@@ -325,7 +325,7 @@
 
     <team-enroll-modal
       v-if="teamModal.open"
-      :is-open.sync="teamModal.open"
+      :is-open="teamModal.open"
       :organization="teamModal.organization"
       :uuid="mk"
       :enroll="enroll"

@@ -1,5 +1,5 @@
 <template>
-  <v-dialog v-model="isOpen" persistent max-width="650">
+  <v-dialog :v-model="isOpen" persistent max-width="650">
     <v-card class="section">
       <v-card-title class="header">
         <span class="title">Add to {{ organization }} team</span>

@@ -1,21 +1,25 @@
 import "@mdi/font/css/materialdesignicons.css";
-import Vue from "vue";
-import Vuetify from "vuetify/lib";
+import "vuetify/styles";
+import { createVuetify } from "vuetify";
+import { VDataTableServer } from 'vuetify/labs/VDataTable'
+import * as directives from "vuetify/directives";
 
-Vue.use(Vuetify);
-
-const opts = {
+export default createVuetify({
+  directives,
+  components: {
+    VDataTableServer,
+  },
   icons: {
-    iconfont: "mdi",
+    defaultSet: "mdi"
   },
   theme: {
     themes: {
       light: {
-        primary: "#003756",
-        secondary: "#f4bc00",
-      },
-    },
-  },
-};
-
-export default new Vuetify(opts);
+        colors: {
+          primary: "#003756",
+          secondary: "#f4bc00"
+        }
+      }
+    }
+  }
+})
