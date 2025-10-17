@@ -37,5 +37,10 @@ module.exports = {
   configureWebpack: {
     plugins: [new VuetifyPlugin()],
     devtool: "source-map",
+    resolve: {
+      alias: {
+        vue: path.resolve("./node_modules/vue"),
+      },
+    },
   },
 };

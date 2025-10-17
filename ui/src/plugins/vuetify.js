@@ -5,7 +5,7 @@ import * as components from "vuetify/components";
 import * as directives from "vuetify/directives";
 import { fa } from "vuetify/iconsets/fa-svg";
 import { aliases, mdi } from "vuetify/iconsets/mdi";
-import GerritIcon from "../components/GerritIcon.vue";
+import GerritIcon from "..//components/GerritIcon.vue";
 
 const customAliases = {
   ...aliases,

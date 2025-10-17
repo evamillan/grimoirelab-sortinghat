@@ -286,7 +286,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<!-- <style lang="scss" scoped>
 @import "../styles/index.scss";
 
 .col {
@@ -296,4 +296,4 @@ export default {
 .v-btn-group--density-comfortable.v-btn-group {
   height: 34px;
 }
-</style>
+</style> -->
